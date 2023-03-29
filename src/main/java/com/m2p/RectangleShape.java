@@ -11,4 +11,13 @@ public class RectangleShape {
         }
         return length*breadth;
     }
+
+    public double findPerimeter(double length, double breadth) {
+
+        if(length < 0 || breadth <0)
+        {
+            throw new IllegalArgumentException();
+        }
+        return 2 * (length + breadth);
+    }
 }

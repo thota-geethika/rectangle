@@ -11,7 +11,7 @@ public class RectangleShapeTest {
     RectangleShape rectangleObject = new RectangleShape();
 
     @Nested
-    class Area {
+    class RectangleArea {
         @Test
         void toReturnAreaAsSixTeenWhenEightAndTwoAreSides() {
             //Arrange
@@ -30,4 +30,25 @@ public class RectangleShapeTest {
             assertThrows(IllegalArgumentException.class, ()-> rectangleObject.findArea(-3,4));
         }
     }
+
+
+    @Nested
+    class RectanglePerimeter{
+        @Test
+        void toReturnSixteenAsPerimeterWhenThreeAndFiveAreSides()
+        {
+            double expectedPerimeter = 16;
+
+            double actualPerimeter = rectangleObject.findPerimeter(3,5);
+
+            assertEquals(expectedPerimeter,actualPerimeter);
+        }
+
+        @Test
+        void toReturnExceptionWhenNegativeValueEntered()
+        {
+            assertThrows(IllegalArgumentException.class, ()-> rectangleObject.findPerimeter(-3,4));
+        }
+    }
+
 }

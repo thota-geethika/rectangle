@@ -3,22 +3,22 @@ package com.m2p;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
+import static com.m2p.RectangleShape.createSquare;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class RectangleShapeTest {
-
-    RectangleShape rectangleObject = new RectangleShape();
 
     @Nested
     class RectangleArea {
         @Test
         void toReturnAreaAsSixTeenWhenEightAndTwoAreSides() {
             //Arrange
+            RectangleShape rectangleObject = new RectangleShape(2,8);
             double expectedArea = 16;
 
             //Act
-            double actualArea = rectangleObject.findRectangleArea(2, 8);
+            double actualArea = rectangleObject.findArea();
 
             //Assert
             assertEquals(expectedArea, actualArea);
@@ -27,7 +27,8 @@ public class RectangleShapeTest {
         @Test
         void toReturnExceptionWhenNegativeValueEntered()
         {
-            assertThrows(IllegalArgumentException.class, ()-> rectangleObject.findRectangleArea(-3,4));
+            RectangleShape rectangleObject = new RectangleShape(-3,4);
+            assertThrows(IllegalArgumentException.class, rectangleObject::findArea);
         }
     }
 
@@ -37,9 +38,10 @@ public class RectangleShapeTest {
         @Test
         void toReturnSixteenAsPerimeterWhenThreeAndFiveAreSides()
         {
+            RectangleShape rectangleObject = new RectangleShape(3,5);
             double expectedPerimeter = 16;
 
-            double actualPerimeter = rectangleObject.findRectanglePerimeter(3,5);
+            double actualPerimeter = rectangleObject.findPerimeter();
 
             assertEquals(expectedPerimeter,actualPerimeter);
         }
@@ -47,7 +49,8 @@ public class RectangleShapeTest {
         @Test
         void toReturnExceptionWhenNegativeValueEntered()
         {
-            assertThrows(IllegalArgumentException.class, ()-> rectangleObject.findRectanglePerimeter(-3,4));
+            RectangleShape rectangleObject = new RectangleShape(-3,4);
+            assertThrows(IllegalArgumentException.class, rectangleObject::findPerimeter);
         }
     }
 
@@ -56,9 +59,10 @@ public class RectangleShapeTest {
         @Test
         void toReturnAreaAsSixteenWhenTheSideIsFour()
         {
+            RectangleShape square = createSquare(4);
             double expectedArea = 16;
 
-            double actualArea = rectangleObject.findSquareArea(4);
+            double actualArea = square.findArea();
 
             assertEquals(expectedArea,actualArea);
         }
@@ -66,7 +70,8 @@ public class RectangleShapeTest {
         @Test
         void toReturnExceptionWhenNegativeValueEntered()
         {
-            assertThrows(IllegalArgumentException.class, ()-> rectangleObject.findSquareArea(-4));
+            RectangleShape square = createSquare(-4);
+            assertThrows(IllegalArgumentException.class, square::findArea);
         }
     }
 
@@ -75,9 +80,10 @@ public class RectangleShapeTest {
         @Test
         void toReturnPerimeterAsTwelveWhenTheSideIsThree()
         {
+            RectangleShape square = createSquare(3);
             double expectedArea = 12;
 
-            double actualArea = rectangleObject.findSquarePerimeter(3);
+            double actualArea = square.findPerimeter();
 
             assertEquals(expectedArea,actualArea);
         }
@@ -85,7 +91,8 @@ public class RectangleShapeTest {
         @Test
         void toReturnExceptionWhenNegativeValueEntered()
         {
-            assertThrows(IllegalArgumentException.class, ()-> rectangleObject.findSquarePerimeter(-4));
+            RectangleShape square = createSquare(-4);
+            assertThrows(IllegalArgumentException.class, square::findPerimeter);
         }
     }
 

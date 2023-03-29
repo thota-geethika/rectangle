@@ -3,32 +3,37 @@ package com.m2p;
 public class RectangleShape {
 
 
-    public double findRectangleArea(double length, double breadth) {
+    private final double lengthOfRectangle;
+    private final double breadthOfRectangle;
+    RectangleShape(double lengthOfRectangle, double breadthOfRectangle)
+    {
+        this.lengthOfRectangle = lengthOfRectangle;
+        this.breadthOfRectangle = breadthOfRectangle;
+    }
 
-        if(length < 0 || breadth <0)
+    public static RectangleShape createSquare(double sideOfSquare)
+    {
+        return new RectangleShape(sideOfSquare,sideOfSquare);
+    }
+
+    public double findArea() {
+
+        if(lengthOfRectangle < 0 || breadthOfRectangle <0)
         {
             throw new IllegalArgumentException();
         }
-        return length*breadth;
+        return lengthOfRectangle*breadthOfRectangle;
     }
 
-    public double findRectanglePerimeter(double length, double breadth) {
+    public double findPerimeter() {
 
-        if(length < 0 || breadth <0)
+        if(lengthOfRectangle < 0 || breadthOfRectangle <0)
         {
             throw new IllegalArgumentException();
         }
-        return 2 * (length + breadth);
-    }
-
-    public double findSquareArea(double side) {
-
-        return findRectangleArea(side,side);
+        return 2 * (lengthOfRectangle + breadthOfRectangle);
     }
 
 
-    public double findSquarePerimeter(double side) {
 
-        return findRectanglePerimeter(side,side);
-    }
 }
